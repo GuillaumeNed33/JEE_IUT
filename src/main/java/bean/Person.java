@@ -1,13 +1,24 @@
 package bean;
 
+
+import org.hibernate.validator.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * Created by Thomas on 04/02/2017.
  */
 public class Person {
+
+    @Email
     String email;
     String firstName;
+    @NotNull
     String lastName;
+    @NotNull
+    @Size(min=2,max=8)
     String login;
+    @NotNull
     boolean isStudent;
 
     public String getEmail() {
@@ -48,13 +59,5 @@ public class Person {
 
     public void setStudent(boolean student) {
         isStudent = student;
-    }
-
-    public Person(String email, String firstName, String lastName, String login, boolean isStudent) {
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.login = login;
-        this.isStudent = isStudent;
     }
 }

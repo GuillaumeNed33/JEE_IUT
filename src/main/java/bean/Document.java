@@ -1,22 +1,22 @@
 package bean;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
  * Created by Thomas on 04/02/2017.
  */
 public class Document {
-    public Document(String title, String content, Date creationDate, Date lastModification) {
-        this.title = title;
-        this.content = content;
-        this.creationDate = creationDate;
-        this.lastModification = lastModification;
-    }
+    @NotNull
+    String title;
+    String content;
+    @NotNull
+    Date creationDate;
+    @Future
+    Date lastModification;
 
-    public String getTitle() {
-
-        return title;
-    }
+    public String getTitle() { return title; }
 
     public void setTitle(String title) {
         this.title = title;
@@ -34,9 +34,7 @@ public class Document {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
+    public void setCreationDate(Date creationDate) { this.creationDate = creationDate; }
 
     public Date getLastModification() {
         return lastModification;
@@ -45,9 +43,4 @@ public class Document {
     public void setLastModification(Date lastModification) {
         this.lastModification = lastModification;
     }
-
-    String title;
-    String content;
-    Date creationDate;
-    Date lastModification;
 }

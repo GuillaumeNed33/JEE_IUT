@@ -1,5 +1,6 @@
 package bean;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,9 +9,10 @@ import java.util.List;
  */
 public class Project {
     String description;
+    @NotNull
     String name;
+    @NotNull
     String urlRepository;
-
     List<Person> teachers;
     List<Person> students;
     List<Person> customers;
