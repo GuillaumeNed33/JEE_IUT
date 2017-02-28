@@ -1,5 +1,10 @@
 package fr.iut;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -19,33 +24,17 @@ import java.util.Map;
 @WebServlet(name = "qrcode", urlPatterns = {"/qrcode"})
 public class QRServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request,
-                         HttpServletResponse response)
+    protected void doGet(final HttpServletRequest request,
+                         final HttpServletResponse response)
             throws ServletException, IOException {
-        Template freemarkerTemplate = null;
-        freemarker.template.Configuration freemarkerConfiguration =
-                new freemarker.template.Configuration();
-        freemarkerConfiguration.setClassForTemplateLoading(this.getClass(), "/");
-        freemarkerConfiguration.setObjectWrapper(new DefaultObjectWrapper());
+        QRCodeWriter writer = new QRCodeWriter();
+        BitMatrix bitMatrix = null;
         try {
-            freemarkerTemplate =
-                    freemarkerConfiguration.getTemplate("templates/listRoom.ftl");
-        } catch (IOException e) {
-            System.out.println("Unable to process request,error during freemarker template retrieval."); }
-                    Map<String, Object> root = new HashMap<String, Object>();
-// navigation data and links
-
-            root.put("title", "QRCODE A LA COMPOTE");
-            root.put("room",SimpleDateFormat.getDateTimeInstance().format(new Date()));
-
-            PrintWriter out = response.getWriter();
-            assert freemarkerTemplate != null;
-            try {
-                freemarkerTemplate.process(root, out);
-                out.close();}
-            catch (TemplateException e) { e.printStackTrace(); }
-// set mime type
-            response.setContentType("text/html");
-        }
-
+            String url = "coucou.";
+            bitMatrix = writer.encode(url, BarcodeFormat.QR_CODE, 300, 300);
+        } catch (WriterException e) { e.printStackTrace(); }
+        response.setContentType("image/png");
+        MatrixToImageWriter.writeToStream(bitMatrix, "png",
+                response.getOutputStream());
     }
+}
