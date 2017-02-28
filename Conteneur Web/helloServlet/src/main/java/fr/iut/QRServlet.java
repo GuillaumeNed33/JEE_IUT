@@ -10,6 +10,8 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.HttpConstraint;
+import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @WebServlet(name = "qrcode", urlPatterns = {"/qrcode"})
+@ServletSecurity(@HttpConstraint(rolesAllowed = "manager-gui"))
 public class QRServlet extends HttpServlet {
     @Override
     protected void doGet(final HttpServletRequest request,

@@ -12,32 +12,7 @@
     <servlet-name>HelloServlet</servlet-name>
     <url-pattern>/hello</url-pattern>
   </servlet-mapping>
-
-  <!-- SECURITY CONSTRAINT #1 -->
-  <security-constraint> <!-- spécifie l'utilisation de contraintes -->
-    <web-resource-collection> <!-- URLs concernées -->
-      <web-resource-name>wholesale</web-resource-name> <!-- nom -->
-      <url-pattern>/company/wholesale/*</url-pattern> <!-- motif -->
-    </web-resource-collection>
-    <auth-constraint> <!-- contrainte d'authentification (qui peut) -->
-      <role-name>PARTNER</role-name>
-    </auth-constraint>
-    <user-data-constraint> <!-- contrainte de transport (chiffrement) -->
-      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-    </user-data-constraint>
-  </security-constraint>
-
-  <!-- SECURITY CONSTRAINT #2 -->
-  <security-constraint>
-    <web-resource-collection>
-      <web-resource-name>retail</web-resource-name>
-      <url-pattern>/company/retail/*</url-pattern>
-    </web-resource-collection>
-    <auth-constraint>
-      <role-name>CLIENT</role-name>
-    </auth-constraint>
-    <user-data-constraint>
-      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-    </user-data-constraint>
-  </security-constraint>
+  <login-config>
+    <auth-method>DIGEST</auth-method>
+  </login-config>
 </web-app>
