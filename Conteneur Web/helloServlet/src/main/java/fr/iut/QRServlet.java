@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(name = "home", urlPatterns = {"/home"})
+@WebServlet(name = "qrcode", urlPatterns = {"/qrcode"})
 public class QRServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request,
@@ -34,10 +34,10 @@ public class QRServlet extends HttpServlet {
             System.out.println("Unable to process request,error during freemarker template retrieval."); }
                     Map<String, Object> root = new HashMap<String, Object>();
 // navigation data and links
-        a
+
             root.put("title", "QRCODE A LA COMPOTE");
-            root.put("room",
-                    SimpleDateFormat.getDateTimeInstance().format(new Date()));
+            root.put("room",SimpleDateFormat.getDateTimeInstance().format(new Date()));
+
             PrintWriter out = response.getWriter();
             assert freemarkerTemplate != null;
             try {

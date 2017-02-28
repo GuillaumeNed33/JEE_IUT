@@ -29,19 +29,19 @@ public class HomeServlet extends HttpServlet {
                     freemarkerConfiguration.getTemplate("templates/home.ftl");
         } catch (IOException e) {
             System.out.println("Unable to process request,error during freemarker template retrieval."); }
-                    Map<String, Object> root = new HashMap<String, Object>();
+        Map<String, Object> root = new HashMap<String, Object>();
 // navigation data and links
-            root.put("title", "freemarker Servlet");
-            root.put("now",
-                    SimpleDateFormat.getDateTimeInstance().format(new Date()));
-            PrintWriter out = response.getWriter();
-            assert freemarkerTemplate != null;
-            try {
-                freemarkerTemplate.process(root, out);
-                out.close();}
-            catch (TemplateException e) { e.printStackTrace(); }
+        root.put("title", "freemarker Servlet - Date");
+        root.put("now",
+                SimpleDateFormat.getDateTimeInstance().format(new Date()));
+        PrintWriter out = response.getWriter();
+        assert freemarkerTemplate != null;
+        try {
+            freemarkerTemplate.process(root, out);
+            out.close();}
+        catch (TemplateException e) { e.printStackTrace(); }
 // set mime type
-            response.setContentType("text/html");
-        }
-
+        response.setContentType("text/html");
     }
+
+}
