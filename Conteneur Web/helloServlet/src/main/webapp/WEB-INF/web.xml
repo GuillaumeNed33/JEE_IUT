@@ -12,7 +12,45 @@
     <servlet-name>HelloServlet</servlet-name>
     <url-pattern>/hello</url-pattern>
   </servlet-mapping>
+
+<!--
+  <filter>
+    <filter-name>guiceFilter</filter-name>
+    <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>guiceFilter</filter-name>
+    <url-pattern>/helloServlet/qrcode/</url-pattern>
+  </filter-mapping><:
+  -<filter-mapping>
+    <filter-name>guiceFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>guiceFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>-->
+
+  <!--<listener>
+    <listener-class>com.example.MyGuiceServletConfig</listener-class>
+  </listener>-->
+
+  <!-- SECURITY CONSTRAINT #1 -->
+  <!--<security-constraint> spécifie l'utilisation de contraintes -->
+  <!-- <web-resource-collection>  URLs concernées -->
+    <!--  <web-resource-name>qrcode</web-resource-name> nom -->
+  <!--<url-pattern>/helloServlet/qrcode/*</url-pattern>  motif -->
+  <!--  </web-resource-collection>
+    <auth-constraint> contrainte d'authentification (qui peut) -->
+  <!--<role-name>MANAGER-GUI</role-name>
+</auth-constraint>
+<user-data-constraint>  contrainte de transport (chiffrement) -->
+  <!--<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+</user-data-constraint>
+</security-constraint>-->
+
   <login-config>
     <auth-method>DIGEST</auth-method>
   </login-config>
+
 </web-app>
