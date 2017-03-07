@@ -22,7 +22,8 @@ import java.util.ArrayList;
  * Simple servlet which fills the database with dummy stuffs
  */
 @Singleton
-public class InitServlet extends HttpServlet {
+public class
+InitServlet extends HttpServlet {
 
     private static final Logger logger = LoggerFactory.getLogger(InitServlet.class);
 
