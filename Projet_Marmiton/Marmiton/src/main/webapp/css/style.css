@@ -1,5 +1,12 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
 #search {
-    background: url("../img/Banner_Cooking.jpg") no-repeat;
+    background-size: 100% auto;
+    padding: 6% 20% 10% 20%;
+    background: url("../img/Banner_Cooking.jpg") no-repeat fixed center;
+    background-size: cover;
 }
 
 #search-bar {
