@@ -44,12 +44,10 @@
           <artifactId>guava</artifactId>
           <version>21.0</version>
       </dependency>
-
-
-              <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>4.2.0.Final</version>
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-validator</artifactId>
+          <version>4.2.0.Final</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate.common</groupId>
@@ -263,15 +261,7 @@
                       </plugin>
                   </reportPlugins>
               </configuration>
-          </plugin>
-          <plugin>
-              <artifactId>maven-assembly-plugin</artifactId>
-              <version>2.2-beta-5</version>
-              <configuration>
-                  <descriptors>
-                      <descriptor>src/main/assembly/binary.xml</descriptor>
-                  </descriptors>
-              </configuration>
+
               <executions>
                   <execution>
                       <phase>install</phase>
