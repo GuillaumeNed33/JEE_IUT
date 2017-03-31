@@ -23,7 +23,7 @@
         <div class="row">
             <section id="search">
                 <h1 class="text-center">Look for a receiprout !</h1>
-                <form action="${pageContext.request.contextPath}/ClientServlet" method="post">
+                <form action="/bdx/iut/info/web/servlet/ClientServlet.java" method="post">
                     <div id=search-bar" class="input-group stylish-input-group">
                         <input type="text" class="form-control" name="receipeName" placeholder="Search" />
                         <span class="input-group-addon">

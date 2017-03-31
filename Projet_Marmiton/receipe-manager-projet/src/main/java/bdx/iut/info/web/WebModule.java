@@ -24,13 +24,13 @@ public class WebModule extends ServletModule {
 
         install(new JpaPersistModule("receipes-manager"));
 
-        logger.info("   install servlet filter");
+        logger.info("install servlet filter");
         filter("/*").through(PersistFilter.class);
 
         logger.info("Install filters.");
 
         serve("/admin/init").with(InitServlet.class);
-        serve("/main").with(ClientServlet.class);
+        serve("/").with(ClientServlet.class);
         // TODO Add additional servlets
 
 
