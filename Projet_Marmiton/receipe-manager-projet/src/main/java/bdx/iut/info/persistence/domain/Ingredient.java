@@ -5,10 +5,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-/**
- * Created by rgiot on 06/02/17.
- * TODO Add the Entities annotations
- */
 @Entity
 public class Ingredient implements Serializable{
     @Id

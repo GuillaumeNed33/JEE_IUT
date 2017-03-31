@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>title</title>
+    <title>{title}</title>
 
     <link href="css/style.css" rel="stylesheet" />
     <!-- Bootstrap -->
@@ -22,15 +22,17 @@
     <div class="container_fluid">
         <div class="row">
             <section id="search">
-                <h1 class="text-center">Look for a receipe !</h1>
-                <div id=search-bar" class="input-group stylish-input-group">
-                    <input type="text" class="form-control"  placeholder="Search" >
-                    <span class="input-group-addon">
-                        <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
-                </div>
+                <h1 class="text-center">Look for a receiprout !</h1>
+                <form action="${pageContext.request.contextPath}/ClientServlet" method="post">
+                    <div id=search-bar" class="input-group stylish-input-group">
+                        <input type="text" class="form-control" name="receipeName" placeholder="Search" />
+                        <span class="input-group-addon">
+                            <button name="action" value="searchByReceipeName" type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
             </section>
         </div>
     </div>

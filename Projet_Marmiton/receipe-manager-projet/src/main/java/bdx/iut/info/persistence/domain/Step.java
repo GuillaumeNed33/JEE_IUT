@@ -1,6 +1,8 @@
 package bdx.iut.info.persistence.domain;
 
 
+import bdx.iut.info.persistence.constraints.IsStep;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,9 +10,6 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-/**
- * Created by rgiot on 06/02/17.
- */
 @Entity
 public class Step implements Serializable {
     @Id
@@ -18,7 +17,7 @@ public class Step implements Serializable {
     private long id;
 
     @NotNull
-    // TODO Create a validation @IsStep
+    @IsStep
     private String stepText;
 
     private String base64Image;

@@ -29,8 +29,6 @@ InitServlet extends HttpServlet {
 
     @Inject
     IngredientDao ingredientDao;
-
-
     @Inject
     ReceipeDao receipeDao;
 

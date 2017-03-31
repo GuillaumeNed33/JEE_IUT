@@ -69,9 +69,7 @@ public class IngredientDao {
      * @return Number of times the ingredient of interest has been used
      */
     public Integer countUsagesInReceipes(Ingredient ing) {
-
-        // TODO Return the right number of ingredients
-        return 0;
+        return (Integer)this.entityManager.get().createQuery("").getResultList().get(0);
     }
 
 }

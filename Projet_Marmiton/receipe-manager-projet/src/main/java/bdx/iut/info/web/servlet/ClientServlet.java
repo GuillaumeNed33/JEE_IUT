@@ -53,12 +53,6 @@ public class ClientServlet extends HttpServlet{
 
 
         ArrayList<String> testList = new ArrayList<String>();
-        testList.add("un");
-        testList.add("deux");
-        testList.add("trois");
-
-        root.put("Clef", "Valeur de n'importe quel type");
-        root.put("elements", testList);
         root.put("receipes", receipes);
 
         // Manage freemarker stuff

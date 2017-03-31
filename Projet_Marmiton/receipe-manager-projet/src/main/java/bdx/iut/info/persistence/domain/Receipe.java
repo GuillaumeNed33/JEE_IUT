@@ -40,7 +40,11 @@ public class Receipe  implements Serializable {
     }
 
     public void addIngredient(Ingredient ingredient, double quantity, String unitType) {
-       // TODO implement this method
+       IngredientQuantity i = new IngredientQuantity();
+       i.setIngredient(ingredient);
+       i.setQuantity(quantity);
+       i.setUnit(unitType);
+       ingredients.add(i);
     }
 
     public void addInstruction(Step step) {
@@ -49,11 +53,11 @@ public class Receipe  implements Serializable {
 
 
     public void removeInstruction(Integer pos) {
-        steps.remove(pos.intValue())    ;
+        steps.remove(pos.intValue());
     }
 
     public void removeIngredient(Integer pos) {
-       // TODO implement this method
+        ingredients.remove(pos.intValue());
     }
 
 

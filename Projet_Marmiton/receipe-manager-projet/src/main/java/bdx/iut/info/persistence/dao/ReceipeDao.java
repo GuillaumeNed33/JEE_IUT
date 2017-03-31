@@ -1,5 +1,6 @@
 package bdx.iut.info.persistence.dao;
 
+import bdx.iut.info.persistence.domain.Ingredient;
 import bdx.iut.info.persistence.domain.Receipe;
 import com.google.inject.Provider;
 import org.slf4j.Logger;
@@ -11,35 +12,40 @@ import java.util.List;
 /**
  * Created by rgiot on 06/02/17.
  *
- * TODO Complete this class / code and decorations are missing
  */
 public class ReceipeDao {
 private Provider<EntityManager> entityManager;
 
     private static final Logger logger = LoggerFactory.getLogger(IngredientDao.class);
 
-    public Receipe create(Receipe t) {
-        // TODO implement
-        return null;
+    public Receipe create(Receipe r) {
+        logger.info("Try to save " + toString());
+        logger.info("Entity Manager" + this.entityManager);
+        logger.info("Entity Manager.get" + this.entityManager.get());
+        this.entityManager.get().persist(r);
+        logger.info("Saved as " + r.getId());
+        return r;
     }
 
     public Receipe read(Long id) {
-        // TODO implemnet
-        return null;
+        return this.entityManager.get().find(Receipe.class, id);
     }
 
     public Receipe update(Receipe t) {
-        //TODO implement
-        return null;
+        return this.entityManager.get().merge(t);
     }
 
     public void delete(Receipe t) {
-        //TODO implement
+        t = this.entityManager.get().merge(t);
+        this.entityManager.get().remove(t);
     }
 
     public List<Receipe> findAll() {
-        //TODO implement
-        return null;
+        StringBuilder query = new StringBuilder("from ");
+        query.append(Receipe.class.getName());
+        List<Receipe> receipes = this.entityManager.get().createQuery(query.toString()).getResultList();
+        logger.debug("{} ingredients found", receipes);
+        return receipes;
     }
 
 
