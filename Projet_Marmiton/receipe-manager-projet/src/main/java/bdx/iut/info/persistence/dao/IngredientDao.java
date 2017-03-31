@@ -1,6 +1,6 @@
 package bdx.iut.info.persistence.dao;
 
-import bdx.iut.info.persistence.domain.*;
+import bdx.iut.info.persistence.domain.Ingredient;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
@@ -16,47 +16,81 @@ import java.util.List;
  */
 @Singleton
 public class IngredientDao {
+    /**
+     *
+     */
     @Inject
     private Provider<EntityManager> entityManager;
 
-    private static final Logger logger = LoggerFactory.getLogger(IngredientDao.class);
+    /**
+     *
+     */
+    private static final Logger LOGGER =
+            LoggerFactory.getLogger(IngredientDao.class);
 
+    /**
+     *
+     * @param t
+     * @return Ingredient
+     */
     @Transactional
-    public Ingredient create(Ingredient t) {
-        logger.info("Try to save " + toString());
-        logger.info("Entity Manager" + this.entityManager);
-        logger.info("Entity Manager.get" + this.entityManager.get());
+    public Ingredient create(final Ingredient t) {
+        LOGGER.info("Try to save " + toString());
+        LOGGER.info("Entity Manager" + this.entityManager);
+        LOGGER.info("Entity Manager.get" + this.entityManager.get());
         this.entityManager.get().persist(t);
-        logger.info("Saved as " + t.getId());
+        LOGGER.info("Saved as " + t.getId());
         return t;
     }
 
+    /**
+     *
+     * @param id
+     * @return Ingredient
+     */
     @Transactional
     public Ingredient read(Long id) {
         return this.entityManager.get().find(Ingredient.class, id);
     }
 
+    /**
+     *
+     * @param t
+     * @return Ingredient
+     */
     @Transactional
     public Ingredient update(Ingredient t) {
         return this.entityManager.get().merge(t);
     }
 
+    /**
+     *
+     * @param t
+     */
     @Transactional
     public void delete(Ingredient t) {
         t = this.entityManager.get().merge(t);
         this.entityManager.get().remove(t);
     }
 
-
+    /**
+     *
+     * @return
+     */
     public List<Ingredient> findAll() {
 
         StringBuilder query = new StringBuilder("from ");
         query.append(Ingredient.class.getName());
         List<Ingredient> ingredients = this.entityManager.get().createQuery(query.toString()).getResultList();
-        logger.debug("{} ingredients found", ingredients);
+        LOGGER.debug("{} ingredients found", ingredients);
         return ingredients;
     }
 
+    /**
+     *
+     * @param name
+     * @return Ingredient
+     */
     public Ingredient findByName(String name) {
         //TODO Implement
         return null;

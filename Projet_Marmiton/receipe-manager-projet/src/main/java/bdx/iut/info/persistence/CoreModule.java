@@ -13,22 +13,23 @@ import org.slf4j.LoggerFactory;
  * To ease the work, we do not work with inmplementations/interfaces
  */
 public class CoreModule extends AbstractModule {
-    /**
+    /**.
      * Logger
      */
-    private static final Logger logger = LoggerFactory.getLogger(CoreModule.class);
+    private static final Logger LOGGER =
+            LoggerFactory.getLogger(CoreModule.class);
 
     @Override
     protected void configure() {
-        logger.info("CoreModule configuration started...");
+        LOGGER.info("CoreModule configuration started...");
 
-        logger.info("Install Ingredient Dao");
+        LOGGER.info("Install Ingredient Dao");
         bind(IngredientDao.class);
 
 
-        logger.info("Install Ingredient ReceipeDao");
+        LOGGER.info("Install Ingredient ReceipeDao");
         bind(ReceipeDao.class);
 
-        logger.info("CoreModule configuration ended.");
+        LOGGER.info("CoreModule configuration ended.");
     }
 }
