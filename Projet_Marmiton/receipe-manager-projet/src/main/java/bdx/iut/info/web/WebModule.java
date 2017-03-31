@@ -19,10 +19,6 @@ public class WebModule extends ServletModule {
 
     @Override
     protected final void configureServlets() {
-
-
-
-
         logger.info("WebModule configureServlets started...");
         super.configureServlets();
 
