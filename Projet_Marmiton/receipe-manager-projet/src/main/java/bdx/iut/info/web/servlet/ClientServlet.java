@@ -25,25 +25,41 @@ import bdx.iut.info.persistence.dao.ReceipeDao;
  * Created by rgiot on 12/02/17.
  */
 @Singleton
-public class ClientServlet extends HttpServlet{
+public class ClientServlet extends HttpServlet {
+    /**.
+     *
+     */
     private static final String BOOTFREE_TEMPLATE = "templates/client.ftl";
-    /**
+    /**.
      * constant for UTF-8 *
      */
     private static final String TEMPLATE_ENCODING = "UTF-8";
-    /**
+    /**.
      * Logger
      */
-    private static final Logger logger = LoggerFactory.getLogger(ClientServlet.class);
+    private static final Logger LOGGER =
+            LoggerFactory.getLogger(ClientServlet.class);
+    /**.
+     *
+     */
+    @Inject
+    private ReceipeDao receipeDao;
 
-     @Inject
-     private ReceipeDao receipeDao;
-
+    /**
+     *
+     * @param req
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(final HttpServletRequest req,
+                         final HttpServletResponse response)
+            throws ServletException, IOException {
 
         List<Receipe> receipes = new ArrayList<Receipe>();
-        if (req.getParameter("action") != null && req.getParameter("action").equals("searchByReceipeName")) {
+        if (req.getParameter("action") != null && req.getParameter("action")
+                .equals("searchByReceipeName")) {
             receipes = receipeDao.findByName(req.getParameter("receipeName"));
         }
 
@@ -57,15 +73,20 @@ public class ClientServlet extends HttpServlet{
 
         // Manage freemarker stuff
         Template freemarkerTemplate = null;
-        freemarker.template.Configuration freemarkerConfiguration = new freemarker.template.Configuration();
-        freemarkerConfiguration.setClassForTemplateLoading(this.getClass(), "/");
+        freemarker.template.Configuration freemarkerConfiguration =
+                new freemarker.template.Configuration();
+        freemarkerConfiguration.setClassForTemplateLoading(this.getClass(),
+                "/");
         freemarkerConfiguration.setObjectWrapper(new DefaultObjectWrapper());
         try {
-            freemarkerTemplate = freemarkerConfiguration.getTemplate(BOOTFREE_TEMPLATE, TEMPLATE_ENCODING);
+            freemarkerTemplate = freemarkerConfiguration.getTemplate(
+                    BOOTFREE_TEMPLATE, TEMPLATE_ENCODING);
 
         } catch (IOException e) {
-            logger.error("Unable to process request, error during freemarker template retrieval.", e);
-
+            LOGGER.error(
+                    "Unable to process request, "
+                            +
+                            "error during freemarker template retrieval.", e);
         }
 
         // navigation data and links
@@ -78,7 +99,7 @@ public class ClientServlet extends HttpServlet{
             freemarkerTemplate.process(root, out);
             out.close();
         } catch (TemplateException e) {
-            logger.error("Error during template processing", e);
+            LOGGER.error("Error during template processing", e);
         }
 
         // set mime type

@@ -49,7 +49,7 @@ public class IngredientDao {
      * @return Ingredient
      */
     @Transactional
-    public Ingredient read(Long id) {
+    public Ingredient read(final Long id) {
         return this.entityManager.get().find(Ingredient.class, id);
     }
 
@@ -59,7 +59,7 @@ public class IngredientDao {
      * @return Ingredient
      */
     @Transactional
-    public Ingredient update(Ingredient t) {
+    public Ingredient update(final Ingredient t) {
         return this.entityManager.get().merge(t);
     }
 
@@ -68,9 +68,8 @@ public class IngredientDao {
      * @param t
      */
     @Transactional
-    public void delete(Ingredient t) {
-        t = this.entityManager.get().merge(t);
-        this.entityManager.get().remove(t);
+    public void delete(final Ingredient t) {
+        this.entityManager.get().remove(this.entityManager.get().merge(t));
     }
 
     /**
@@ -81,7 +80,9 @@ public class IngredientDao {
 
         StringBuilder query = new StringBuilder("from ");
         query.append(Ingredient.class.getName());
-        List<Ingredient> ingredients = this.entityManager.get().createQuery(query.toString()).getResultList();
+        List<Ingredient> ingredients =
+                this.entityManager.get().createQuery(query.toString())
+                        .getResultList();
         LOGGER.debug("{} ingredients found", ingredients);
         return ingredients;
     }
@@ -91,7 +92,7 @@ public class IngredientDao {
      * @param name
      * @return Ingredient
      */
-    public Ingredient findByName(String name) {
+    public Ingredient findByName(final String name) {
         //TODO Implement
         return null;
     }
@@ -102,8 +103,9 @@ public class IngredientDao {
      * @param ing Ingredient of interest
      * @return Number of times the ingredient of interest has been used
      */
-    public Integer countUsagesInReceipes(Ingredient ing) {
-        return (Integer)this.entityManager.get().createQuery("").getResultList().get(0);
+    public Integer countUsagesInReceipes(final Ingredient ing) {
+        return (Integer) this.entityManager.get()
+                .createQuery("").getResultList().get(0);
     }
 
 }

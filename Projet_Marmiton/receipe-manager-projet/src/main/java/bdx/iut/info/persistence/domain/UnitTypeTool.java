@@ -8,18 +8,34 @@ import java.util.List;
  *
  * The aime of this class is to provide helpers to fill quantities
  */
-public class UnitTypeTool {
+public final class UnitTypeTool {
+    /**
+     *
+     */
+    private UnitTypeTool() {
 
-    public static List<java.lang.String> getUnitDescription(UnitType type) {
-        if( UnitType.volume == type) {
-                return Arrays.asList("l", "dl", "cl", "mm", "cuil. soupe", "cuil. café");
-        }
+    }
 
-        else if( UnitType.weight == type) {
-            return Arrays.asList("g", "dg", "cg", "mg", "cuil. soupe", "cuil. café");
-        }
-        else if( UnitType.number == type) {
-            return Arrays.asList("", "feuille" );
+    /**
+     *
+     * @param type
+     * @return List<java.lang.String>
+     */
+    public static List<java.lang.String> getUnitDescription(
+            final UnitType type) {
+
+        if (UnitType.volume == type) {
+            return Arrays.asList(
+                    "l", "dl", "cl", "mm", "cuil. soupe", "cuil. café"
+            ); }
+
+        else if (UnitType.weight == type) {
+            return Arrays.asList(
+                    "g", "dg", "cg", "mg", "cuil. soupe", "cuil. café"
+            ); }
+
+        else if (UnitType.number == type) {
+            return Arrays.asList("", "feuille");
         }
 
         else {

@@ -18,29 +18,40 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
+/**.
  * Simple servlet which fills the database with dummy stuffs
  */
 @Singleton
 public class
 InitServlet extends HttpServlet {
-
-    private static final Logger logger = LoggerFactory.getLogger(InitServlet.class);
-
-    @Inject
-    IngredientDao ingredientDao;
-    @Inject
-    ReceipeDao receipeDao;
-
     /**
+     *
+     */
+    private static final Logger LOGGER =
+            LoggerFactory.getLogger(InitServlet.class);
+    /**
+     *
+     */
+    @Inject
+    private IngredientDao ingredientDao;
+    /**
+     *
+     */
+    @Inject
+    private ReceipeDao receipeDao;
+
+    /**.
      * HTTP GET access
-     * @param req use an optional nb parameter to make evidence of transactionnal behavior volontary triggering an exception
+     * @param req use an optional nb parameter to make evidence
+     *           of transactionnal behavior volontary triggering an exception
      * @param resp response to sent
      * @throws ServletException by container
      * @throws IOException by container
      */
     @Override
-    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(final HttpServletRequest req,
+                         final HttpServletResponse resp)
+            throws ServletException, IOException {
 
         ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
         ArrayList<Step> steps = new ArrayList<Step>();
@@ -82,15 +93,25 @@ InitServlet extends HttpServlet {
 
 
         Step step1 = new Step();
-        step1.setStepText("Mettre la farine dans une terrine et former un puits.");
+        step1.setStepText("Mettre la farine dans une "
+                +
+                "terrine et former un puits.");
         steps.add(step1);
 
         Step step2 = new Step();
-        step2.setStepText("Y déposer les oeufs entiers, le sucre, l'huile et le beurre.");
+        step2.setStepText("Y déposer les oeufs entiers,"
+                +
+                " le sucre, l'huile et le beurre.");
         steps.add(step2);
 
         Step step3 = new Step();
-        step3.setStepText("Mélanger délicatement avec un fouet en ajoutant au fur et à mesure le lait. La pâte ainsi obtenue doit avoir une consistance d'un liquide légèrement épais.");
+        step3.setStepText("Mélanger délicatement avec un fouet"
+                +
+                " en ajoutant au fur et à mesure le lait."
+                +
+                " La pâte ainsi obtenue doit avoir une consistance d'un "
+                +
+                "liquide légèrement épais.");
         steps.add(step3);
 
 
@@ -100,10 +121,18 @@ InitServlet extends HttpServlet {
 
 
         Step step5 = new Step();
-        step5.setStepText("Faire chauffer une poêle antiadhésive et la huiler très légèrement. Y verser une louche de pâte, la répartir dans la poêle puis attendre qu'elle soit cuite d'un côté avant de la retourner. Cuire ainsi toutes les crêpes à feu doux.");
+        step5.setStepText("Faire chauffer une poêle antiadhésive "
+                +
+                "et la huiler très légèrement. Y verser une louche de pâte,"
+                +
+                " la répartir dans la poêle puis attendre qu'elle soit cuite "
+                +
+                "d'un côté avant de la retourner. Cuire ainsi toutes les crêpes"
+                +
+                " à feu doux.");
         steps.add(step5);
 
-        Receipe receipe = new Receipe();
+        final Receipe receipe = new Receipe();
         receipe.setTitle("Crèpes");
         receipe.setCookTime(20);
         receipe.setPreparationTime(10);
@@ -120,10 +149,10 @@ InitServlet extends HttpServlet {
         receipe.addInstruction(step4);
         receipe.addInstruction(step5);
 
-        logger.info("Will add " + ingredients.size()+" ingredients");
+        LOGGER.info("Will add " + ingredients.size() + " ingredients");
         for(Ingredient ingredient: ingredients) {
             resp.getOutputStream().print("<p> Add" + ingredient.getName() + "</p>");
-            logger.info("Will add " + ingredient.getName());
+            LOGGER.info("Will add " + ingredient.getName());
             ingredientDao.create(ingredient);
         }
 
