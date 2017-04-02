@@ -22,7 +22,7 @@
     <div class="container_fluid">
             <section id="search">
                 <div class="row">
-                    <h1 class="text-center">Look for a receiprout !</h1>
+                    <h1 class="text-center">Look for a receipe !</h1>
                     <form action="">
                         <div id=search-bar" class="input-group stylish-input-group">
                             <input type="text" class="form-control" name="receipeName" placeholder="Search" />
