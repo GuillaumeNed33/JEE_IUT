@@ -19,6 +19,9 @@ public class CoreModule extends AbstractModule {
     private static final Logger LOGGER =
             LoggerFactory.getLogger(CoreModule.class);
 
+    /**.
+     * Configuration file
+     */
     @Override
     protected void configure() {
         LOGGER.info("CoreModule configuration started...");

@@ -1,9 +1,9 @@
 package bdx.iut.info.web.servlet;
 
+import bdx.iut.info.persistence.dao.ReceipeDao;
 import bdx.iut.info.persistence.domain.Receipe;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.sun.org.apache.regexp.internal.RE;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -20,8 +20,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import bdx.iut.info.persistence.dao.ReceipeDao;
 /**
  * Created by rgiot on 12/02/17.
  */
@@ -66,8 +64,10 @@ public class ClientServlet extends HttpServlet {
         Receipe r = new Receipe();
         r.setTitle("poche");
         receipes.add(r);
-        root.put("receipes",receipes);
-        if (req.getParameter("action") != null && req.getParameter("action").equals("searchByReceipeName")) {
+        root.put("receipes", receipes);
+        if (req.getParameter("action") != null
+                &&
+                req.getParameter("action").equals("searchByReceipeName")) {
             receipes = receipeDao.findByName(req.getParameter("receipeName"));
             root.put("receipes", receipes);
         }

@@ -18,20 +18,20 @@ import java.util.List;
  */
 @Singleton
 public class IngredientDao {
-    /**
-     *
+    /**.
+     * EntityManager
      */
     @Inject
     private Provider<EntityManager> entityManager;
 
-    /**
-     *
+    /**.
+     * Logger
      */
     private static final Logger LOGGER =
             LoggerFactory.getLogger(IngredientDao.class);
 
-    /**
-     *
+    /**.
+     * Create an Ingredient
      * @param t .
      * @return Ingredient
      */
@@ -45,8 +45,8 @@ public class IngredientDao {
         return t;
     }
 
-    /**
-     *
+    /**.
+     * Find a ingredient with his Id
      * @param id .
      * @return Ingredient
      */
@@ -55,8 +55,8 @@ public class IngredientDao {
         return this.entityManager.get().find(Ingredient.class, id);
     }
 
-    /**
-     *
+    /**.
+     * Update an Ingredient
      * @param t .
      * @return Ingredient
      */
@@ -65,8 +65,8 @@ public class IngredientDao {
         return this.entityManager.get().merge(t);
     }
 
-    /**
-     *
+    /**.
+     * Delete an Ingredient
      * @param t .
      */
     @Transactional
@@ -74,8 +74,8 @@ public class IngredientDao {
         this.entityManager.get().remove(this.entityManager.get().merge(t));
     }
 
-    /**
-     *
+    /**.
+     * Find all Ingredient in a receipe.
      * @return List<Ingredient>
      */
     public List<Ingredient> findAll() {
@@ -89,18 +89,16 @@ public class IngredientDao {
         return ingredients;
     }
 
-    /**
-     *
+    /**.
+     * Find a Ingredient With his name.
      * @param name .
      * @return Ingredient
      */
     public Ingredient findByName(final String name) {
         List<Ingredient> ingredients = findAll();
         Ingredient ingredientFound = null;
-        for (Ingredient ingredient : ingredients)
-        {
-            if(ingredient.getName().equals(name))
-            {
+        for (Ingredient ingredient : ingredients) {
+            if (ingredient.getName().equals(name)) {
                 ingredientFound = ingredient;
             }
         }
@@ -117,17 +115,21 @@ public class IngredientDao {
     public Integer countUsagesInReceipes(final Ingredient ing) {
 
         StringBuilder query = new StringBuilder("from ");
-        query.append(IngredientQuantity.class.getName()).append(" as IngredientQuantity");
-        query.append(" where ingredientquantity.").append(IngredientQuantity_.ingredient.getName())
+        query.append(IngredientQuantity.class.getName())
+                .append(" as IngredientQuantity");
+        query.append(" where ingredientquantity.")
+                .append(IngredientQuantity_.ingredient.getName())
                 .append(" = :ingredient");
 
-        List<IngredientQuantity> result = entityManager.get().createQuery(query.toString())
+        List<IngredientQuantity> result =
+                entityManager.get().createQuery(query.toString())
                 .setParameter("ingredient", ing).getResultList();
         int sum = 0;
         for (IngredientQuantity i : result) {
             sum += i.getQuantity();
         }
-        LOGGER.debug("Ingredient  with name '{}' used '{}' times", ing.getName(), sum);
+        LOGGER.debug("Ingredient  with name '{}' used '{}' times",
+                ing.getName(), sum);
         return sum;
 
     }

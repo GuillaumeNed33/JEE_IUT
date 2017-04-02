@@ -2,7 +2,6 @@ package bdx.iut.info.web.servlet;
 
 import bdx.iut.info.persistence.dao.IngredientDao;
 import bdx.iut.info.persistence.dao.ReceipeDao;
-import bdx.iut.info.persistence.domain.Ingredient;
 import bdx.iut.info.persistence.domain.Receipe;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -22,6 +21,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *
+ */
 @Singleton
 public class
 AdminServlet extends HttpServlet {
@@ -51,10 +53,10 @@ AdminServlet extends HttpServlet {
 
     /**
      *
-     * @param req
-     * @param response
-     * @throws ServletException
-     * @throws IOException
+     * @param req .
+     * @param response .
+     * @throws ServletException .
+     * @throws IOException .
      */
     protected void doGet(final HttpServletRequest req,
                          final HttpServletResponse response)
@@ -62,10 +64,13 @@ AdminServlet extends HttpServlet {
         // Configure the objets to give to freemarker
         Map<String, Object> root = new HashMap<String, Object>();
         ArrayList<Receipe> receipes = new ArrayList<Receipe>();
-        receipes = (ArrayList<Receipe>)receipeDao.findAll();
-        root.put("receipes",receipes);
-        if (req.getParameter("action") != null && req.getParameter("action").equals("deleteReceipe")) {
-            receipeDao.delete(receipes.get(Integer.parseInt(req.getParameter("indexReceipe"))));
+        receipes = (ArrayList<Receipe>) receipeDao.findAll();
+        root.put("receipes", receipes);
+        if (req.getParameter("action") != null
+                &&
+                req.getParameter("action").equals("deleteReceipe")) {
+            receipeDao.delete(receipes.get(Integer.parseInt(
+                    req.getParameter("indexReceipe"))));
         }
 
 
@@ -103,5 +108,4 @@ AdminServlet extends HttpServlet {
         response.setContentType("text/html");
 
     }
-
 }

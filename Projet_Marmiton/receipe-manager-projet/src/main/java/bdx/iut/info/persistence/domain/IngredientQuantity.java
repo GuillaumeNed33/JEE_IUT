@@ -11,32 +11,28 @@ import java.io.Serializable;
 /**
  * Created by rgiot on 06/02/17.
  */
-
-/**
- *
- */
 @Entity
 public class IngredientQuantity  implements Serializable {
     /**
-     *
+     * Id.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     /**
-     *
+     * Ingredient.
      */
     @NotNull
     @ManyToOne
     private Ingredient ingredient;
     /**
-     *
+     * unit.
      */
     @NotNull
     private String unit;
 
     /**
-     *
+     * quantity.
      */
     @NotNull
     private double quantity;
@@ -44,7 +40,7 @@ public class IngredientQuantity  implements Serializable {
     // Automatically generated code
 
     /**
-     *
+     * return the id.
      * @return long
      */
     public long getId() {
@@ -52,7 +48,7 @@ public class IngredientQuantity  implements Serializable {
     }
 
     /**
-     *
+     * change the id.
      * @param id2 .
      */
     public void setId(final long id2) {
@@ -60,7 +56,7 @@ public class IngredientQuantity  implements Serializable {
     }
 
     /**
-     *
+     * return Ingredient.
      * @return Ingredient
      */
     public Ingredient getIngredient() {
@@ -68,7 +64,7 @@ public class IngredientQuantity  implements Serializable {
     }
 
     /**
-     *
+     * change Ingredient.
      * @param ingredient2 .
      */
     public void setIngredient(final Ingredient ingredient2) {
@@ -76,7 +72,7 @@ public class IngredientQuantity  implements Serializable {
     }
 
     /**
-     *
+     * return quantity.
      * @return double
      */
     public double getQuantity() {
@@ -84,7 +80,7 @@ public class IngredientQuantity  implements Serializable {
     }
 
     /**
-     *
+     * change quantity.
      * @param quantity2 .
      */
     public void setQuantity(final double quantity2) {
@@ -92,7 +88,7 @@ public class IngredientQuantity  implements Serializable {
     }
 
     /**
-     *
+     * return unit.
      * @return String
      */
     public String getUnit() {
@@ -100,7 +96,7 @@ public class IngredientQuantity  implements Serializable {
     }
 
     /**
-     *
+     * change unit.
      * @param unit2 .
      */
     public void setUnit(final String unit2) {
@@ -108,7 +104,7 @@ public class IngredientQuantity  implements Serializable {
     }
 
     /**
-     *
+     * Return informations in a string.
      * @return String
      */
     @Override

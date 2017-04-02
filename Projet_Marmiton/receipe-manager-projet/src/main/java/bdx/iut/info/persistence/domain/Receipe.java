@@ -18,35 +18,35 @@ import java.util.List;
 @Entity
 public class Receipe  implements Serializable {
     /**
-     *
+     * Id.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     /**
-     *
+     * Title.
      */
     @NotNull
     private java.lang.String title;
     /**
-     *
+     * preparationTime.
      */
     @NotNull
     private Integer preparationTime;
     /**
-     *
+     * cookTime.
      */
     private Integer cookTime;
 
     /**
-     *
+     * List of the receipe steps.
      */
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @ElementCollection
     @NotNull
     private List<Step> steps;
     /**
-     *
+     * List of Ingredients.
      */
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @ElementCollection
@@ -54,7 +54,7 @@ public class Receipe  implements Serializable {
     private List<IngredientQuantity> ingredients;
 
     /**
-     *
+     * Constructor.
      */
     public Receipe() {
         steps = new ArrayList<Step>();
@@ -62,7 +62,7 @@ public class Receipe  implements Serializable {
     }
 
     /**
-     *
+     * add an ingredient.
      * @param ingredient .
      * @param quantity .
      * @param unitType .
@@ -77,7 +77,7 @@ public class Receipe  implements Serializable {
     }
 
     /**
-     *
+     * add a step in a receipe.
      * @param step .
      */
     public void addInstruction(final Step step) {
@@ -85,7 +85,7 @@ public class Receipe  implements Serializable {
     }
 
     /**
-     *
+     * remove a step.
      * @param pos .
      */
     public void removeInstruction(final Integer pos) {
@@ -93,7 +93,7 @@ public class Receipe  implements Serializable {
     }
 
     /**
-     *
+     * remove an ingredient.
      * @param pos .
      */
     public void removeIngredient(final Integer pos) {
@@ -101,7 +101,7 @@ public class Receipe  implements Serializable {
     }
 
     /**
-     *
+     * count steps.
      * @return int
      */
     public int nbSteps() {
@@ -109,7 +109,7 @@ public class Receipe  implements Serializable {
     }
 
     /**
-     *
+     * count ingredients.
      * @return int
      */
     public int nbIngredients() {
@@ -119,7 +119,7 @@ public class Receipe  implements Serializable {
     // Automatically generated code
 
     /**
-     *
+     * return id.
      * @return long
      */
     public long getId() {
@@ -127,7 +127,7 @@ public class Receipe  implements Serializable {
     }
 
     /**
-     *
+     * change id.
      * @param id2 .
      */
     public void setId(final long id2) {

@@ -18,17 +18,17 @@ public class Ingredient implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    /**
-     *
+    /**.
+     * Name of the ingredient.
      */
     private java.lang.String name;
     /**
-     *
+     * UnitType of the Ingredient.
      */
     private UnitType unitType;
 
     /**
-     *
+     * Constructor.
      */
     public Ingredient() {
         name = "";
@@ -40,7 +40,7 @@ public class Ingredient implements Serializable {
     // Automatically generated code
 
     /**
-     *
+     * Return the id.
      * @return long
      */
     public long getId() {
@@ -48,7 +48,7 @@ public class Ingredient implements Serializable {
     }
 
     /**
-     *
+     * Change Id.
      * @param id2 .
      */
     public void setId(final long id2) {
@@ -56,7 +56,7 @@ public class Ingredient implements Serializable {
     }
 
     /**
-     *
+     * Return the name.
      * @return String
      */
     public java.lang.String getName() {
@@ -64,7 +64,7 @@ public class Ingredient implements Serializable {
     }
 
     /**
-     *
+     * Change the name.
      * @param name2 .
      */
     public void setName(final java.lang.String name2) {
@@ -72,7 +72,7 @@ public class Ingredient implements Serializable {
     }
 
     /**
-     *
+     * Return the UnitType.
      * @return UnitType
      */
     public UnitType getUnitType() {
@@ -80,7 +80,7 @@ public class Ingredient implements Serializable {
     }
 
     /**
-     *
+     * Change the UnitType.
      * @param unitType2 .
      */
     public void setUnitType(final UnitType unitType2) {

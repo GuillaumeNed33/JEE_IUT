@@ -14,19 +14,19 @@ import java.util.List;
  *
  */
 public class ReceipeDao {
-    /**
-     *
+    /**.
+     * entityManager
      */
     private Provider<EntityManager> entityManager;
 
-    /**
-     *
+    /**.
+     * Logger
      */
     private static final Logger LOGGER =
             LoggerFactory.getLogger(IngredientDao.class);
 
     /**
-     *
+     * Create a receipe.
      * @param r .
      * @return Receipe
      */
@@ -40,7 +40,7 @@ public class ReceipeDao {
     }
 
     /**
-     *
+     * Find a receipe with her id.
      * @param id .
      * @return Receipe
      */
@@ -49,7 +49,7 @@ public class ReceipeDao {
     }
 
     /**
-     *
+     * Update a receipe.
      * @param t .
      * @return Receipe
      */
@@ -58,15 +58,15 @@ public class ReceipeDao {
     }
 
     /**
-     *
+     * Delete a receipe.
      * @param t .
      */
     public void delete(final Receipe t) {
         this.entityManager.get().remove(this.entityManager.get().merge(t));
     }
 
-    /**
-     *
+    /**.
+     * Find All receipes.
      * @return List<Receipe>
      */
     public List<Receipe> findAll() {
@@ -79,15 +79,15 @@ public class ReceipeDao {
         return receipes;
     }
 
-    /**
-     *
+    /**.
+     * Find a Receipe with her name
      * @param name .
      * @return List<Receipe>
      */
     public List<Receipe> findByName(final String name) {
         List<Receipe> receipesFound = new ArrayList<Receipe>();
-        for(Receipe s : findAll()){
-            if(s.getTitle().contains(name)){
+        for (Receipe s : findAll()) {
+            if (s.getTitle().contains(name)) {
                 receipesFound.add(s);
             }
         }

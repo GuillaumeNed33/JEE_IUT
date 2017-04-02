@@ -3,12 +3,12 @@ package bdx.iut.info.persistence.constraints;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-/**
- *
+/**.
+ * IsStepValidator Implementation
  */
 public class StepValidator implements ConstraintValidator<IsStep, String> {
-    /**
-     *
+    /**.
+     * initialisation
      * @param isStep .
      */
     @Override
@@ -16,8 +16,8 @@ public class StepValidator implements ConstraintValidator<IsStep, String> {
 
     }
 
-    /**
-     *
+    /**.
+     * Condition of validation
      * @param s .
      * @param constraintValidatorContext .
      * @return boolean
