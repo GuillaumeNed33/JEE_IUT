@@ -49,7 +49,7 @@ public class Ingredient implements Serializable {
 
     /**
      *
-     * @param id2
+     * @param id2 .
      */
     public void setId(final long id2) {
         this.id = id2;
@@ -65,7 +65,7 @@ public class Ingredient implements Serializable {
 
     /**
      *
-     * @param name2
+     * @param name2 .
      */
     public void setName(final java.lang.String name2) {
         this.name = name2;
@@ -81,7 +81,7 @@ public class Ingredient implements Serializable {
 
     /**
      *
-     * @param unitType2
+     * @param unitType2 .
      */
     public void setUnitType(final UnitType unitType2) {
         this.unitType = unitType2;

@@ -43,8 +43,8 @@ InitServlet extends HttpServlet {
     /**.
      * HTTP GET access
      * @param req use an optional nb parameter to make evidence
-     *           of transactionnal behavior volontary triggering an exception
-     * @param resp response to sent
+     *           of transactionnal behavior volontary triggering an exception .
+     * @param resp response to sent .
      * @throws ServletException by container
      * @throws IOException by container
      */
@@ -132,17 +132,26 @@ InitServlet extends HttpServlet {
                 " à feu doux.");
         steps.add(step5);
 
+        final int cookTime = 20;
+        final int prepareTime = 10;
+        final int qteFarine = 300;
+        final int qteOeuf = 3;
+        final int qteSucre = 3;
+        final int qteHuile = 2;
+        final int qteBeurre = 50;
+        final int qteLait = 75;
+        final int qteRhum = 5;
         final Receipe receipe = new Receipe();
         receipe.setTitle("Crèpes");
-        receipe.setCookTime(20);
-        receipe.setPreparationTime(10);
-        receipe.addIngredient(farine, 300, "g");
-        receipe.addIngredient(oeuf, 3, "");
-        receipe.addIngredient(sucre, 3, "cuil. soupe");
-        receipe.addIngredient(huile, 2, "cuil. soupe");
-        receipe.addIngredient(beurreFondu, 50, "g");
-        receipe.addIngredient(lait, 75, "cl");
-        receipe.addIngredient(rhum, 5, "cl");
+        receipe.setCookTime(cookTime);
+        receipe.setPreparationTime(prepareTime);
+        receipe.addIngredient(farine, qteFarine, "g");
+        receipe.addIngredient(oeuf, qteOeuf, "");
+        receipe.addIngredient(sucre, qteSucre, "cuil. soupe");
+        receipe.addIngredient(huile, qteHuile, "cuil. soupe");
+        receipe.addIngredient(beurreFondu, qteBeurre, "g");
+        receipe.addIngredient(lait, qteLait, "cl");
+        receipe.addIngredient(rhum, qteRhum, "cl");
         receipe.addInstruction(step1);
         receipe.addInstruction(step2);
         receipe.addInstruction(step3);
@@ -150,22 +159,28 @@ InitServlet extends HttpServlet {
         receipe.addInstruction(step5);
 
         LOGGER.info("Will add " + ingredients.size() + " ingredients");
-        for(Ingredient ingredient: ingredients) {
-            resp.getOutputStream().print("<p> Add" + ingredient.getName() + "</p>");
+        for (Ingredient ingredient: ingredients) {
+            resp.getOutputStream().print(
+                    "<p> Add" + ingredient.getName() + "</p>"
+            );
             LOGGER.info("Will add " + ingredient.getName());
             ingredientDao.create(ingredient);
         }
 
 
         resp.getOutputStream().print("List of ingredients</br>");
-        for(Ingredient ingredient: ingredientDao.findAll()){
-            resp.getOutputStream().print(ingredient.getName() + " / " + ingredient.getUnitType());
+        for (Ingredient ingredient: ingredientDao.findAll()) {
+            resp.getOutputStream().print(
+                    ingredient.getName() + " / " + ingredient.getUnitType()
+            );
         }
 
 /*
         resp.getOutputStream().print("Add instructions </br>");
         for(Step step : steps) {
-            resp.getOutputStream().print("<p> Add" + step.getStepText() + "</p>");
+            resp.getOutputStream().print(
+            "<p> Add" + step.getStepText() + "</p>"
+            );
             instructionDao.create(step);
         }
 */
@@ -173,7 +188,7 @@ InitServlet extends HttpServlet {
 
 
         resp.getOutputStream().print("<h1>Listing des recettes</h1>");
-        for(Receipe receipe1: receipeDao.findAll()) {
+        for (Receipe receipe1: receipeDao.findAll()) {
             resp.getOutputStream().println(receipe1.toString());
         }
 

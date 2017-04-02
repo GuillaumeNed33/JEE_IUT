@@ -26,7 +26,7 @@ public class ReceipeDao {
 
     /**
      *
-     * @param r
+     * @param r .
      * @return Receipe
      */
     public Receipe create(final Receipe r) {
@@ -40,7 +40,7 @@ public class ReceipeDao {
 
     /**
      *
-     * @param id
+     * @param id .
      * @return Receipe
      */
     public Receipe read(final Long id) {
@@ -49,7 +49,7 @@ public class ReceipeDao {
 
     /**
      *
-     * @param t
+     * @param t .
      * @return Receipe
      */
     public Receipe update(final Receipe t) {
@@ -58,7 +58,7 @@ public class ReceipeDao {
 
     /**
      *
-     * @param t
+     * @param t .
      */
     public void delete(final Receipe t) {
         this.entityManager.get().remove(this.entityManager.get().merge(t));
@@ -80,7 +80,7 @@ public class ReceipeDao {
 
     /**
      *
-     * @param name
+     * @param name .
      * @return List<Receipe>
      */
     public List<Receipe> findByName(final String name) {

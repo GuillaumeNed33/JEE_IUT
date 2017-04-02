@@ -30,7 +30,7 @@ public class IngredientDao {
 
     /**
      *
-     * @param t
+     * @param t .
      * @return Ingredient
      */
     @Transactional
@@ -45,7 +45,7 @@ public class IngredientDao {
 
     /**
      *
-     * @param id
+     * @param id .
      * @return Ingredient
      */
     @Transactional
@@ -55,7 +55,7 @@ public class IngredientDao {
 
     /**
      *
-     * @param t
+     * @param t .
      * @return Ingredient
      */
     @Transactional
@@ -65,7 +65,7 @@ public class IngredientDao {
 
     /**
      *
-     * @param t
+     * @param t .
      */
     @Transactional
     public void delete(final Ingredient t) {
@@ -74,7 +74,7 @@ public class IngredientDao {
 
     /**
      *
-     * @return
+     * @return List<Ingredient>
      */
     public List<Ingredient> findAll() {
 
@@ -89,7 +89,7 @@ public class IngredientDao {
 
     /**
      *
-     * @param name
+     * @param name .
      * @return Ingredient
      */
     public Ingredient findByName(final String name) {

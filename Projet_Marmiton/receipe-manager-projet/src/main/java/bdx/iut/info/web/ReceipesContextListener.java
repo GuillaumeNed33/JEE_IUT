@@ -21,6 +21,10 @@ public class ReceipesContextListener extends GuiceServletContextListener {
     private static final Logger LOGGER =
             LoggerFactory.getLogger(ReceipesContextListener.class);
 
+    /**
+     *
+     * @return Injector
+     */
     @Override
     protected final Injector getInjector() {
         LOGGER.info("Injector creation asked");
