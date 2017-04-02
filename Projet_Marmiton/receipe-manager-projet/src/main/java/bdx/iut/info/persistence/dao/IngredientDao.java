@@ -1,6 +1,8 @@
 package bdx.iut.info.persistence.dao;
 
 import bdx.iut.info.persistence.domain.Ingredient;
+import bdx.iut.info.persistence.domain.IngredientQuantity;
+import bdx.iut.info.persistence.domain.IngredientQuantity_;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
@@ -93,8 +95,16 @@ public class IngredientDao {
      * @return Ingredient
      */
     public Ingredient findByName(final String name) {
-        //TODO Implement
-        return null;
+        List<Ingredient> ingredients = findAll();
+        Ingredient ingredientFound = null;
+        for (Ingredient ingredient : ingredients)
+        {
+            if(ingredient.getName().equals(name))
+            {
+                ingredientFound = ingredient;
+            }
+        }
+        return ingredientFound;
     }
 
     /**
@@ -103,9 +113,23 @@ public class IngredientDao {
      * @param ing Ingredient of interest
      * @return Number of times the ingredient of interest has been used
      */
+    @Transactional
     public Integer countUsagesInReceipes(final Ingredient ing) {
-        return (Integer) this.entityManager.get()
-                .createQuery("").getResultList().get(0);
+
+        StringBuilder query = new StringBuilder("from ");
+        query.append(IngredientQuantity.class.getName()).append(" as IngredientQuantity");
+        query.append(" where ingredientquantity.").append(IngredientQuantity_.ingredient.getName())
+                .append(" = :ingredient");
+
+        List<IngredientQuantity> result = entityManager.get().createQuery(query.toString())
+                .setParameter("ingredient", ing).getResultList();
+        int sum = 0;
+        for (IngredientQuantity i : result) {
+            sum += i.getQuantity();
+        }
+        LOGGER.debug("Ingredient  with name '{}' used '{}' times", ing.getName(), sum);
+        return sum;
+
     }
 
 }

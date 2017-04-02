@@ -3,6 +3,7 @@ package bdx.iut.info.web.servlet;
 import bdx.iut.info.persistence.domain.Receipe;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.sun.org.apache.regexp.internal.RE;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -57,19 +58,21 @@ public class ClientServlet extends HttpServlet {
                          final HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Receipe> receipes = new ArrayList<Receipe>();
-        if (req.getParameter("action") != null && req.getParameter("action")
-                .equals("searchByReceipeName")) {
-            receipes = receipeDao.findByName(req.getParameter("receipeName"));
-        }
-
 
         // Configure the objets to give to freemarker
         Map<String, Object> root = new HashMap<String, Object>();
 
+        List<Receipe> receipes = new ArrayList<Receipe>();
+        Receipe r = new Receipe();
+        r.setTitle("poche");
+        receipes.add(r);
+        root.put("receipes",receipes);
+        if (req.getParameter("action") != null && req.getParameter("action").equals("searchByReceipeName")) {
+            receipes = receipeDao.findByName(req.getParameter("receipeName"));
+            root.put("receipes", receipes);
+        }
 
-        ArrayList<String> testList = new ArrayList<String>();
-        root.put("receipes", receipes);
+
 
         // Manage freemarker stuff
         Template freemarkerTemplate = null;

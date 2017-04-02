@@ -193,7 +193,7 @@
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-site-plugin</artifactId>
               <version>3.3</version>
-              <configuration>
+              <goals>
                   <reportPlugins>
                       <plugin>
                           <groupId>org.apache.maven.plugins</groupId>
@@ -260,7 +260,7 @@
                           <version>2.4.3</version>
                       </plugin>
                   </reportPlugins>
-              </configuration>
+              </goals>
 
               <executions>
                   <execution>

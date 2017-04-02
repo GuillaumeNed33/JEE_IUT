@@ -1,5 +1,6 @@
 package bdx.iut.info.web;
 
+import bdx.iut.info.web.servlet.AdminServlet;
 import bdx.iut.info.web.servlet.ClientServlet;
 import bdx.iut.info.web.servlet.InitServlet;
 import com.google.inject.persist.PersistFilter;
@@ -31,7 +32,7 @@ public class WebModule extends ServletModule {
 
         serve("/admin/init").with(InitServlet.class);
         serve("/").with(ClientServlet.class);
-        // TODO Add additional servlets
+        serve("/admin/main").with(AdminServlet.class);
 
 
         logger.info("WebModule configureServlets ended.");

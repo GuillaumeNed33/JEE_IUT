@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.persistence.EntityManager;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -74,7 +75,7 @@ public class ReceipeDao {
         List<Receipe> receipes =
                 this.entityManager.get().createQuery(query.toString())
                         .getResultList();
-        LOGGER.debug("{} ingredients found", receipes);
+        LOGGER.debug("{} receipes found", receipes);
         return receipes;
     }
 
@@ -84,8 +85,13 @@ public class ReceipeDao {
      * @return List<Receipe>
      */
     public List<Receipe> findByName(final String name) {
-        // TODO implement
-        return null;
+        List<Receipe> receipesFound = new ArrayList<Receipe>();
+        for(Receipe s : findAll()){
+            if(s.getTitle().contains(name)){
+                receipesFound.add(s);
+            }
+        }
+        return receipesFound;
     }
 
 }

@@ -36,16 +36,11 @@
                 </div>
             </section>
             <section id="recette">
-                <table class="table">
-                    <tr>
-                        <th>Colonne</th>
-                    </tr>
-
+                <ul>
                 <#list receipes as receipe>
-                    <tr><td>${receipe} </td><tr>
+                    <li>${receipe_index} - ${receipe.getTitle()}</li>
                 </#list>
-
-                </table>
+                </ul>
             </section>
     </div>
 </body>
