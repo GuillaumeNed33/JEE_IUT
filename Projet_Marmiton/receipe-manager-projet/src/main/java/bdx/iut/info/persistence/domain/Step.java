@@ -43,7 +43,7 @@ public class Step implements Serializable {
 
     /**
      *
-     * @param id2
+     * @param id2 .
      */
     public void setId(final long id2) {
         this.id = id2;
@@ -59,7 +59,7 @@ public class Step implements Serializable {
 
     /**
      *
-     * @param stepText2
+     * @param stepText2 .
      */
     public void setStepText(final String stepText2) {
         this.stepText = stepText2;
@@ -75,7 +75,7 @@ public class Step implements Serializable {
 
     /**
      *
-     * @param base64Image2
+     * @param base64Image2 .
      */
     public void setBase64Image(final String base64Image2) {
         this.base64Image = base64Image2;

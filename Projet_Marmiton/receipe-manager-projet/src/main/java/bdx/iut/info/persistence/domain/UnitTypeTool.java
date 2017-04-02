@@ -17,28 +17,22 @@ public final class UnitTypeTool {
     }
 
     /**
-     *
-     * @param type
+     * @param type .
      * @return List<java.lang.String>
      */
     public static List<java.lang.String> getUnitDescription(
             final UnitType type) {
-
         if (UnitType.volume == type) {
             return Arrays.asList(
                     "l", "dl", "cl", "mm", "cuil. soupe", "cuil. café"
-            ); }
-
-        else if (UnitType.weight == type) {
+            );
+        } else if (UnitType.weight == type) {
             return Arrays.asList(
                     "g", "dg", "cg", "mg", "cuil. soupe", "cuil. café"
-            ); }
-
-        else if (UnitType.number == type) {
+            );
+        } else if (UnitType.number == type) {
             return Arrays.asList("", "feuille");
-        }
-
-        else {
+        } else {
             return Arrays.asList("");
         }
     }

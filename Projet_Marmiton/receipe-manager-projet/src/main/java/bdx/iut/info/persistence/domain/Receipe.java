@@ -63,9 +63,9 @@ public class Receipe  implements Serializable {
 
     /**
      *
-     * @param ingredient
-     * @param quantity
-     * @param unitType
+     * @param ingredient .
+     * @param quantity .
+     * @param unitType .
      */
     public void addIngredient(final Ingredient ingredient,
                               final double quantity, final String unitType) {
@@ -78,7 +78,7 @@ public class Receipe  implements Serializable {
 
     /**
      *
-     * @param step
+     * @param step .
      */
     public void addInstruction(final Step step) {
         steps.add(step);
@@ -86,7 +86,7 @@ public class Receipe  implements Serializable {
 
     /**
      *
-     * @param pos
+     * @param pos .
      */
     public void removeInstruction(final Integer pos) {
         steps.remove(pos.intValue());
@@ -94,7 +94,7 @@ public class Receipe  implements Serializable {
 
     /**
      *
-     * @param pos
+     * @param pos .
      */
     public void removeIngredient(final Integer pos) {
         ingredients.remove(pos.intValue());
@@ -128,7 +128,7 @@ public class Receipe  implements Serializable {
 
     /**
      *
-     * @param id2
+     * @param id2 .
      */
     public void setId(final long id2) {
         this.id = id2;
@@ -144,7 +144,7 @@ public class Receipe  implements Serializable {
 
     /**
      *
-     * @param preparationTime2
+     * @param preparationTime2 .
      */
     public void setPreparationTime(final Integer preparationTime2) {
         this.preparationTime = preparationTime2;
@@ -160,7 +160,7 @@ public class Receipe  implements Serializable {
 
     /**
      *
-     * @param cookTime2
+     * @param cookTime2 .
      */
     public void setCookTime(final Integer cookTime2) {
         this.cookTime = cookTime2;
@@ -176,7 +176,7 @@ public class Receipe  implements Serializable {
 
     /**
      *
-     * @param steps2
+     * @param steps2 .
      */
     public void setSteps(final List<Step> steps2) {
         this.steps = steps2;
@@ -192,7 +192,7 @@ public class Receipe  implements Serializable {
 
     /**
      *
-     * @param ingredients2
+     * @param ingredients2 .
      */
     public void setIngredients(final List<IngredientQuantity> ingredients2) {
         this.ingredients = ingredients2;
@@ -208,7 +208,7 @@ public class Receipe  implements Serializable {
 
     /**
      *
-     * @param title2
+     * @param title2 .
      */
     public void setTitle(final java.lang.String title2) {
         this.title = title2;

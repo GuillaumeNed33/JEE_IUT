@@ -53,7 +53,7 @@ public class IngredientQuantity  implements Serializable {
 
     /**
      *
-     * @param id2
+     * @param id2 .
      */
     public void setId(final long id2) {
         this.id = id2;
@@ -69,7 +69,7 @@ public class IngredientQuantity  implements Serializable {
 
     /**
      *
-     * @param ingredient2
+     * @param ingredient2 .
      */
     public void setIngredient(final Ingredient ingredient2) {
         this.ingredient = ingredient2;
@@ -85,7 +85,7 @@ public class IngredientQuantity  implements Serializable {
 
     /**
      *
-     * @param quantity2
+     * @param quantity2 .
      */
     public void setQuantity(final double quantity2) {
         this.quantity = quantity2;
@@ -101,7 +101,7 @@ public class IngredientQuantity  implements Serializable {
 
     /**
      *
-     * @param unit2
+     * @param unit2 .
      */
     public void setUnit(final String unit2) {
         this.unit = unit2;

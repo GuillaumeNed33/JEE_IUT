@@ -48,8 +48,8 @@ public class ClientServlet extends HttpServlet {
 
     /**
      *
-     * @param req
-     * @param response
+     * @param req .
+     * @param response .
      * @throws ServletException
      * @throws IOException
      */

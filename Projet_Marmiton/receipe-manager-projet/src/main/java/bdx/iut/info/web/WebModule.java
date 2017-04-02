@@ -13,28 +13,32 @@ import org.slf4j.LoggerFactory;
  * Created by fred on 08/03/15.
  */
 public class WebModule extends ServletModule {
-    /**
+    /**.
      * Logger
      */
-    private static final Logger logger = LoggerFactory.getLogger(WebModule.class);
+    private static final Logger LOGGER =
+            LoggerFactory.getLogger(WebModule.class);
 
+    /**
+     *
+     */
     @Override
     protected final void configureServlets() {
-        logger.info("WebModule configureServlets started...");
+        LOGGER.info("WebModule configureServlets started...");
         super.configureServlets();
 
         install(new JpaPersistModule("receipes-manager"));
 
-        logger.info("install servlet filter");
+        LOGGER.info("install servlet filter");
         filter("/*").through(PersistFilter.class);
 
-        logger.info("Install filters.");
+        LOGGER.info("Install filters.");
 
         serve("/admin/init").with(InitServlet.class);
         serve("/").with(ClientServlet.class);
         serve("/admin/main").with(AdminServlet.class);
 
 
-        logger.info("WebModule configureServlets ended.");
+        LOGGER.info("WebModule configureServlets ended.");
     }
 }
